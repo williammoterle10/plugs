@@ -8,16 +8,19 @@
 {{use "jquery"}}
 {{use "jsmenu"}}
 {{
-menu_items = [
-    {
-    'name': 'user',
-    'title':_('Settings'),
-    'subs':[
-            {'name': 'information', 'title':_('Information'), 'link':'/user/view'},
-            {'name': 'password', 'title':_('Chanage Password'), 'link':'/user/change_password'},
-            ]
-    },
-]      
+menu_items = []
+if request.user:
+    menu_items.append(
+        {
+        'name': 'user',
+        'title':_('Settings'),
+        'subs':[
+                {'name': 'information', 'title':_('Information'), 'link':'/user/view'},
+                {'name': 'password', 'title':_('Chanage Password'), 'link':'/user/change_password'},
+                ]
+        },
+    )
+pass
 if request.user and request.user.is_superuser:
     menu_items.append(
         {
