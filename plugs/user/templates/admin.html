@@ -1,0 +1,32 @@
+{{extend "layout.html"}}
+{{block content}}
+<div class="content">
+	<div class="col_4 col">
+		<div id="col1_content" class="clearfix">
+			<div class="info">
+				<img src="{{=request.user.get_image_url()}}" class="user"/>
+				<p>Username: {{=request.user.username}}</p>
+			</div>
+		</div>
+	</div>
+	<div class="content col_11 col">
+		<div class="center col_10 panel box_shadow">
+			{{<<message1}}
+			<h3>Change Information</h3>
+			{{<<changeinfoform}}
+		</div>
+		<div style="height: 10px; border-bottom: 1px solid rgb(204, 204, 204);" class="clear"></div>
+		<div class="center col_10 panel box_shadow">
+			{{<<message2}}
+			<h3>Change Password</h3>
+			{{<<changepasswordform}}
+		</div>
+		<div style="height: 10px; border-bottom: 1px solid rgb(204, 204, 204);" class="clear"></div>
+		
+	</div>
+	<div class="clear"></div>
+</section>
+{{end}}
+{{block topnav}}
+<span>Welcome, {{=request.user.username}} | <a href="/logout">Logout</a></span>
+{{end}}
