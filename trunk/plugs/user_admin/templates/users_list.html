@@ -1,8 +1,16 @@
-{{extend layout}}
+{{extend "user_admin_layout.html"}}
+
+{{block menu}}
+{{menu('admin')}}
+{{end}}
+
+{{block sub_menu}}
+{{sub_menu(menu_items, 'user_admin', 'users')}}
+{{end}}
 
 {{block content_tool}}
-{{if request.user.is_superuser:}}
-    <a class="btn btn-blue" href="{{=get_model_url('add')}}">{{=add_button_text}}</a>
+{{if request.user.is_superuser or request.user.is_manager:}}
+    <a class="btn btn-blue" href="/users/add">{{=_('Click here to add new user.')}}</a>
 {{pass}}
 {{end}}
 
@@ -10,20 +18,15 @@
 {{use "jquery"}}
 {{use "jqpagination"}}
 {{use "jsquery"}}
-<script type="text/javascript">
-  $(function(){
-      var width = $(window).width() - 270;
-      if ($('#content_main').width() > width){
-        $('#content_main').width(width);
-      }
-//    $('#content_main').next('.box-bottom').width($('#content_main table').width());
-  });
-</script>
-<div id="content_main" style="overflow-x:auto;padding-bottom:20px;">
-{{embed table}}
+
+<div class="box">
+<div class="query">
+{{embed query_form}}
 </div>
+{{embed table}}
+<div class="box-bottom">
 <div id="pagination" class="right"></div>
-<div class="left">共有：<font color="red">{{=info['total']}}</font> 条记录</div>
+<div class="left">{{=_('Total')}}:<font color="red">{{=info['total']}}</font> {{=_('Records')}}</div>
 <script type="text/javascript">
 var load_content = function(new_page_index){
     new_page_index = new_page_index||0;
@@ -32,10 +35,10 @@ var load_content = function(new_page_index){
     var query_string = $.query.set('pageno', new_page_index).set('data', '').toString();
     $.ajax({
       type: 'POST',
-      url: "{{=get_model_url('list')}}" + query_string,
+      url: "{{=request.path}}" + query_string,
       dataType: 'json',
       success: function(data){
-            $('#{{=table_id}}').find('tbody').html(data.table);
+        $('#users_table').find('tbody').html(data.table);
         }
     });
 }
@@ -49,13 +52,15 @@ function handlePaginationClick(new_page_index, pagination_container) {
 $(function(){
     $("#pagination").pagination({{=info['total']}}, {
             items_per_page:{{=info['rows_per_page']}},
-            prev_text:'上一页',
-            next_text:'下一页',
+            prev_text:"{{=_('Prev')}}",
+            next_text:"{{=_('Next')}}",
             first_call:true,
             current_page:{{=info['pageno']}},
             callback:handlePaginationClick
         });
 });
 </script>
+</div>
+</div>
 
 {{end}}
