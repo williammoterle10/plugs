@@ -15,7 +15,7 @@ def user_view():
 @require_login
 @expose('/user/edit')
 def user_edit():
-    from uliweb.utils.generic import EditView
+    from plugs.generic.base import EditView
     
     view = EditView('user', condition=request.user.id, ok_url=url_for(user_view))
     return view.run()
@@ -60,7 +60,7 @@ def user_change_password():
             return {'form':form, 'ok':False}
     
 def get_users_list_view(c):
-    from uliweb.utils.generic import ListView
+    from plugs.generic.base import ListView
     from uliweb.orm import get_model
     from uliweb import request
     from uliweb.core.html import Tag
@@ -91,7 +91,7 @@ def get_users_list_view(c):
     return view
 
 def create_user_query(url):
-    from uliweb.utils.generic import QueryView
+    from plugs.generic.base import QueryView
     
     fields = ('username',) 
     query = QueryView('user', ok_url=url, fields=fields)
@@ -115,7 +115,7 @@ def users_list():
 @require_login
 @expose('/users/add')
 def users_add():
-    from uliweb.utils.generic import AddView
+    from plugs.generic.base import AddView
     from uliweb.orm import get_model
     from forms import AddUserForm
     
@@ -133,7 +133,7 @@ def users_add():
 @require_login
 @expose('/users/<int:id>')
 def users_view(id):
-    from uliweb.utils.generic import DetailView
+    from plugs.generic.base import DetailView
     from uliweb import orm
     
     def boolean_convert(b, obj):
@@ -149,7 +149,7 @@ def users_view(id):
 @require_login
 @expose('/users/<int:id>/edit')
 def users_edit(id):
-    from uliweb.utils.generic import EditView
+    from plugs.generic.base import EditView
     from forms import EditUserForm
 
     if request.user.is_superuser:
@@ -163,7 +163,7 @@ def users_edit(id):
 @require_login
 @expose('/users/<int:id>/delete')
 def users_delete(id):
-    from uliweb.utils.generic import DeleteView
+    from plugs.generic.base import DeleteView
     
     if request.user.is_superuser:
         view = DeleteView('user', condition=int(id), ok_url=url_for(users_list))

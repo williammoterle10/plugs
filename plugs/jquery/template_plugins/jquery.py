@@ -1,6 +1,5 @@
-def call(app, var, env, version='1.4.4', ui=False, theme='redmond', css_only=False):
+def call(app, var, env, version='1.5', ui=False, theme='redmond', css_only=False, ui_version='1.8.9'):
     a = []
-    ui_version = '1.8.5'
     if css_only:
         return {'toplinks':['jquery/ui/css/%s/jquery-ui-%s.custom.css' % (theme, ui_version)]}
     if version:

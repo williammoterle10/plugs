@@ -20,7 +20,7 @@ def get_model_url(suffix):
 #@expose('/generic/<model>/list')
 def generic_model_list(model=None, get_model_url=get_model_url, layout=None, 
     template=None, key_field='id', add_button_text=None, view=None, data=None):
-    from uliweb.utils.generic import ListView
+    from base import ListView
     from uliweb import request, response, settings, json, error
     from uliweb.core.html import Tag
     from uliweb.orm import get_model
@@ -66,7 +66,7 @@ def generic_model_list(model=None, get_model_url=get_model_url, layout=None,
     
 def generic_model_add(model=None, get_model_url=get_model_url, layout=None, 
     template=None, title=None, view=None, data=None):
-    from uliweb.utils.generic import AddView
+    from base import AddView
     from uliweb import request, error, response
     from uliweb.orm import get_model
     
@@ -96,7 +96,7 @@ def generic_model_add(model=None, get_model_url=get_model_url, layout=None,
     
 def generic_model_view(model=None, id=None, get_model_url=get_model_url, layout=None, 
     template=None, title=None, view=None, data=None):
-    from uliweb.utils.generic import DetailView
+    from base import DetailView
     import uliweb.orm as orm
     from uliweb import request, error, response
     
@@ -130,7 +130,7 @@ def generic_model_view(model=None, id=None, get_model_url=get_model_url, layout=
     
 def generic_model_edit(model=None, id=None, get_model_url=get_model_url, layout=None, 
     template=None, title=None, view=None, data=None):
-    from uliweb.utils.generic import EditView
+    from base import EditView
     from uliweb import orm
     from uliweb import request, error, response
     
@@ -160,7 +160,7 @@ def generic_model_edit(model=None, id=None, get_model_url=get_model_url, layout=
     return result
     
 def generic_model_delete(model=None, id=None, get_model_url=get_model_url, view=None):
-    from uliweb.utils.generic import DeleteView
+    from base import DeleteView
     from uliweb import orm
     from uliweb import request
     

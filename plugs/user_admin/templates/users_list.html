@@ -15,8 +15,8 @@
 {{end}}
 
 {{block content_main}}
-{{use "jquery"}}
-{{use "jqpagination"}}
+{{use "jquery", css_only=True}}
+{{use "jqdatatable"}}
 {{use "jsquery"}}
 
 <div class="box">
@@ -27,38 +27,16 @@
 <div class="box-bottom">
 <div id="pagination" class="right"></div>
 <div class="left">{{=_('Total')}}:<font color="red">{{=info['total']}}</font> {{=_('Records')}}</div>
-<script type="text/javascript">
-var load_content = function(new_page_index){
-    new_page_index = new_page_index||0;
-//    var filter = $('#sel_type').find('a.ui-state-active').attr('rel');
-//    var query_string = $.query.set('pageno', new_page_index).set('filter', filter).toString();
-    var query_string = $.query.set('pageno', new_page_index).set('data', '').toString();
-    $.ajax({
-      type: 'POST',
-      url: "{{=request.path}}" + query_string,
-      dataType: 'json',
-      success: function(data){
-        $('#users_table').find('tbody').html(data.table);
-        }
-    });
-}
-
-function handlePaginationClick(new_page_index, pagination_container) {
-        // This selects 20 elements from a content array
-        load_content(new_page_index);
-        return false;
-    }
-
-$(function(){
-    $("#pagination").pagination({{=info['total']}}, {
-            items_per_page:{{=info['rows_per_page']}},
-            prev_text:"{{=_('Prev')}}",
-            next_text:"{{=_('Next')}}",
-            first_call:true,
-            current_page:{{=info['pageno']}},
-            callback:handlePaginationClick
-        });
-});
+<script>
+$(document).ready(function() {
+    var query_string = $.query.set('pageno', 0).set('data', '').toString();
+	$('#users_table').dataTable( {
+		"bProcessing": true,
+        "bServerSide": true,
+		"sAjaxSource": "{{=request.path}}" + query_string,
+        "sPaginationType": "full_numbers"
+	} );
+} );
 </script>
 </div>
 </div>
