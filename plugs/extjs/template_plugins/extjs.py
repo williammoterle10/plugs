@@ -1,4 +1,4 @@
-def call(app, var, env, adapter=None, all=False, debug=False):
+def call(app, var, env, adapter=None, all=False, debug=False, lang=None):
     a = []
     a.append('extjs/resources/css/ext-all.css')
     if not adapter:
@@ -22,6 +22,9 @@ def call(app, var, env, adapter=None, all=False, debug=False):
 
     if debug:
         a.append('extjs/ext-all-debug.js')
+        
+    if lang:
+        a.append('extjs/src/locale/ext-lang-%s.js' % lang)
         
     a.append('extjs/ext-init.js')
     return {'toplinks':a}
