@@ -4,7 +4,7 @@
  * licensing@sencha.com
  * http://www.sencha.com/license
  */
-Ext.BLANK_IMAGE_URL = 'resources/images/default/s.gif';
+Ext.BLANK_IMAGE_URL = '/static/extjs/resources/images/default/s.gif';
 
 // old school cookie functions
 var Cookies = {};
