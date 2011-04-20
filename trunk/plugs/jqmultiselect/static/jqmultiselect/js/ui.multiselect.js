@@ -35,6 +35,8 @@ $.widget("ui.multiselect", {
 		show: 'slideDown',
 		hide: 'slideUp',
 		dividerLocation: 0.5,
+        width: null,
+        elementWidth: false,
 		nodeComparator: function(node1,node2) {
 //			var text1 = node1.text(),
 //			    text2 = node2.text();
@@ -59,7 +61,10 @@ $.widget("ui.multiselect", {
 		var that = this;
 
 		// set dimensions
-		this.container.width(this.element.width()+1);
+        if (this.options.elementWidth)
+            this.container.width(this.element.width()+1);
+        else if (this.options.width)
+            this.container.width(width);
         var width = this.container.width()-1;
 		this.selectedContainer.width(Math.floor(width*this.options.dividerLocation));
 		this.availableContainer.width(Math.floor(width*(1-this.options.dividerLocation)));
@@ -271,9 +276,11 @@ $.widget("ui.multiselect", {
 		elements.removeClass('ui-state-hover');
 		elements.mouseover(function() {
 			$(this).addClass('ui-state-hover');
+//			$(this).removeClass('ui-state-default');
 		});
 		elements.mouseout(function() {
 			$(this).removeClass('ui-state-hover');
+//			$(this).addClass('ui-state-default');
 		});
 	},
 	_registerAddEvents: function(elements) {

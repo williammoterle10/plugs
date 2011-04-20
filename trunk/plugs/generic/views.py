@@ -19,8 +19,8 @@ def get_model_url(suffix):
     
 #@expose('/generic/<model>/list')
 def generic_model_list(model=None, get_model_url=get_model_url, layout=None, 
-    template=None, key_field='id', add_button_text=None, view=None, data=None):
-    from base import ListView
+    template=None, key_field='id', add_button_text=None, view=None, data=None, json_result=False):
+    from uliweb.utils.generic import ListView
     from uliweb import request, response, settings, json, error
     from uliweb.core.html import Tag
     from uliweb.orm import get_model
@@ -35,18 +35,25 @@ def generic_model_list(model=None, get_model_url=get_model_url, layout=None,
         if not model or not get_model(model):
             return error("Can't find model [%s], please check it" % model)
         pageno = int(request.GET.get('pageno', 0))
+        rows_per_page=settings.get_var('PARA/ROWS_PER_PAGE', 10)
         
+        if json_result:
+            pageno = int(request.values.get('page', 1)) - 1
+            rows_per_page = int(request.values.get('rows', rows_per_page))
         fields_convert_map = {key_field:key}
         
         _id = '%s_table' % model
-        view =  ListView(model, rows_per_page=settings.get_var('PARA/ROWS_PER_PAGE', 10), 
+        view =  ListView(model, rows_per_page=rows_per_page, 
             pageno=pageno, id=_id, fields_convert_map=fields_convert_map)
     else:
         _id = view.id
     
-    if 'data' in request.GET:
-        result = view.run(head=False, body=True)
-        return json(result)
+    if 'data' in request.values:
+        if json_result:
+            return json(view.json())
+        else:
+            result = view.run(head=False, body=True)
+            return json(result)
     else:
         result = view.run(head=True, body=False)
         if isinstance(result, dict):
@@ -61,12 +68,14 @@ def generic_model_list(model=None, get_model_url=get_model_url, layout=None,
             result['get_model_url'] = get_model_url
             result['table_id'] = _id
             result['add_button_text'] = add_button_text or _('Click here to add new object')
+            if json_result:
+                result['table'] = view
             result.update(data)
         return result
     
 def generic_model_add(model=None, get_model_url=get_model_url, layout=None, 
     template=None, title=None, view=None, data=None):
-    from base import AddView
+    from uliweb.utils.generic import AddView
     from uliweb import request, error, response
     from uliweb.orm import get_model
     
@@ -96,7 +105,7 @@ def generic_model_add(model=None, get_model_url=get_model_url, layout=None,
     
 def generic_model_view(model=None, id=None, get_model_url=get_model_url, layout=None, 
     template=None, title=None, view=None, data=None):
-    from base import DetailView
+    from uliweb.utils.generic import DetailView
     import uliweb.orm as orm
     from uliweb import request, error, response
     
@@ -130,7 +139,7 @@ def generic_model_view(model=None, id=None, get_model_url=get_model_url, layout=
     
 def generic_model_edit(model=None, id=None, get_model_url=get_model_url, layout=None, 
     template=None, title=None, view=None, data=None):
-    from base import EditView
+    from uliweb.utils.generic import EditView
     from uliweb import orm
     from uliweb import request, error, response
     
@@ -160,7 +169,7 @@ def generic_model_edit(model=None, id=None, get_model_url=get_model_url, layout=
     return result
     
 def generic_model_delete(model=None, id=None, get_model_url=get_model_url, view=None):
-    from base import DeleteView
+    from uliweb.utils.generic import DeleteView
     from uliweb import orm
     from uliweb import request
     

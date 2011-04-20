@@ -1,26 +1,9 @@
 #coding=utf-8
 from uliweb import expose
-from uliweb.i18n import gettext_lazy as _
 
 def __begin__():
-    from uliweb import request, redirect
-    
-    if not request.user:
-        return redirect('/login' + '?next=%s' % request.path)
-
-def create_audit_query(url):
-    from uliweb.utils.generic import QueryView
-    from uliweb.orm import get_model
-    from uliweb import settings
-    from forms import QueryForm
-    from uliweb.form import SelectField
-    
-    Audit = get_model('audit')
-    modify_flag = SelectField(_('MofidyFlag'), choices=settings.get_var('PARA/AUDIT_MODIFY_FLAG'))
-    fields = ('table_id', 'obj_id', 'title', ('modify_flag', modify_flag), 'modified_date', 'modified_user') 
-    layout = [('table_id', 'obj_id', 'modify_flag', 'title'), ('modified_date', 'modified_user')]
-    query = QueryView(Audit, ok_url=url, fields=fields, layout=layout, form_cls=QueryForm)
-    return query
+    from uliweb.contrib.auth import if_login
+    return if_login()
 
 def get_audit_list(c):
     from uliweb.utils.generic import ListView
