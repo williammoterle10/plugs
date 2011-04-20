@@ -229,16 +229,15 @@ pre 			{	margin:1.5em 0;white-space:pre;}
 
 
 /*******************************************************************/
-body, html { height: 100% !important;}
-.container {
-position:relative !important;
-min-height:80%; /* real browsers */
-height: auto !important;
+body, html {}
+.container {margin:0; position:relative !important;min-height:100%;
+width:100%!important;
 }
-header {height:62px;margin:0 auto 5px;position:relative;
-border-bottom: 4px solid #D9E7FF;}
-header .logo {font-size:2.5em; height:52px; padding-top:8px; font-weight:700; 
-    text-shadow:1px 1px 2px #666; padding-left:30px;float:left;}
+.content {margin:0; padding-bottom: 80px;width:100% !important;}
+header {height:62px;margin:0 auto 5px;position:relative;border-bottom: 4px solid #D9E7FF;
+width:100%!important;
+}
+header .logo {font-size:2.2em; height:52px; padding-top:8px; font-weight:700; text-shadow:1px 1px 2px #666; padding-left:30px;float:left;}
 header nav {float:right;margin:0;}
 nav ul {list-style:none;}
 nav ul li {display:block;float:left;line-height:1;}
@@ -278,7 +277,9 @@ border-top: 5px solid #ddd;
 margin:0 auto;
 margin-top: 10px;
 padding:10px 0 18px;
-width:100%;
+width:100%!important;
+position: absolute;
+bottom: 0;
 height:50px;
 background-color: #eee;
 -moz-border-radius:0 0 5px 5px;
@@ -287,13 +288,7 @@ background-color: #eee;
 
 .buttons {background-color:#fff;padding:4px;margin-top:10px;}
 
-.corner, .panel {-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius:3px;}
-.panel {border: 1px solid gray; background-color: white;padding:10px;}
-.panel h3 {
-margin: 10px 30px 20px 10px;
-font-size: 240%;
-}
-
+.corner {-webkit-border-radius: 3px; -moz-border-radius: 3px; border-radius:3px;}
 .error, .notice, .success {padding:.8em;border:2px solid #ddd;}
 .error {background:#FBE3E4;color:#8a1f11;border-color:#FBC2C4;}
 .notice {background:#FFF6BF;color:#514721;border-color:#FFD324;}
@@ -334,7 +329,6 @@ border-radius: 5px;
 * html .clearfix, * html .container {height:1%;}
 
 .top_blank_small {margin-top: 10px}
-.content {margin:0 5px; position:relative;}
 
 img.icon {border: 3px solid #eee; padding:2px; margin:5px;}
 
@@ -395,7 +389,6 @@ background-color:#D9E7FF;
 margin-top:15px;
 padding: 2px 8px;
 border: 1px solid #9EC2FF;
-white-space:nowrap;
 }
 table.table tr {height: 30px;}
 table.table td {
@@ -410,7 +403,6 @@ table.view th {
 margin-top:15px;
 padding: 2px 8px;
 border: none;
-white-space:nowrap;
 }
 table.view tr {height: 30px;}
 table.view td {
