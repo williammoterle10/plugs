@@ -649,7 +649,7 @@
 		}
 		//alert(currentComboValue.toSource());
 	    if (!this.multiple) {
-	        return itemValue.toLowerCase().indexOf(currentComboValue.toLowerCase()) == 0;
+	        return itemValue.toLowerCase().indexOf(currentComboValue.toLowerCase()) != -1;
 	    }
 	    else {
 	        //exclude values that are already selected
@@ -960,6 +960,7 @@
 		var self=this;
 		
 		var on_success = function(data){
+			html = '<option value=""></option>'
 			for(i=0, max_len=data.length; i<max_len; i++){
 				html = html + '<option value=' + data[i][0] + '>' + data[i][1] + '</option>'
 			}

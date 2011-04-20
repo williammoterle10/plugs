@@ -1,7 +1,7 @@
 /* Multiselect
 ----------------------------------*/
 
-.ui-multiselect { border: solid 1px; font-size: 0.8em; }
+.ui-multiselect { border: solid 1px #ccc; font-size: 0.8em; }
 .ui-multiselect ul { -moz-user-select: none; }
 .ui-multiselect li { margin: 0; padding: 0; cursor: default; 
     line-height: 20px; height: 20px; font-size: 11px; list-style: none; 
@@ -9,7 +9,7 @@
     overflow:hidden;
     white-space: nowrap;
     }
-.ui-multiselect li a { color: #999; text-decoration: none; padding: 0; display: block; float: left; cursor: pointer;}
+.ui-multiselect li a { color: #000; text-decoration: none; padding: 0; display: block; float: left; cursor: pointer;}
 .ui-multiselect li.ui-draggable-dragging { padding-left: 10px; }
 
 .ui-multiselect div.selected { position: relative; padding: 0; margin: 0; border: 0; float:left; }
@@ -23,7 +23,8 @@
  
 .ui-multiselect .ui-state-default { border: none; margin-bottom: 1px; position: relative; padding-left: 15px;}
 .ui-multiselect .ui-state-hover { border: none; }
-.ui-multiselect .ui-widget-header {border: none; font-size: 11px; margin-bottom: 1px;}
+.ui-multiselect .ui-widget-header {border: none; font-size: 11px; margin-bottom: 1px; background:#E7EEF7;color:#000;}
+.ui-multiselect .ui-widget-header a{color:#000;}
  
 .ui-multiselect .add-all { float: right; padding: 7px;}
 .ui-multiselect .remove-all { float: right; padding: 7px;}
@@ -33,4 +34,4 @@
 .ui-multiselect li span.ui-icon-arrowthick-2-n-s { position: absolute; left: 2px; }
 .ui-multiselect li a.action { position: absolute; right: 2px; top: 2px; }
  
-.ui-multiselect input.search { height: 18px; padding: 1px; opacity: 0.5; margin: 4px; width: 100px; }
+.ui-multiselect input.search { height: 18px; padding: 1px; margin: 4px; width: 100px; }
