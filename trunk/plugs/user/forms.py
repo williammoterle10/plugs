@@ -21,6 +21,4 @@ class LoginForm(Form):
             return {'username': _('User "%s" does not exist!') % all_data['username']}
         if not user.check_password(all_data['password']):
             return {'password' : _('Password is not right.')}
-        if all_data['password'] == settings.USER_ADMIN.DEFAULT_PASSWORD:
-            return {'password' : _("Please don't use default password, click <a href=\"%s\">here</a> to change your password.") % url_for(change_password, user.id)}
         
