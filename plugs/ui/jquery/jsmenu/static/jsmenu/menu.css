@@ -1,39 +1,39 @@
-ul.menu, ul.menu ul {
+ul.simplemenu, ul.simplemenu ul {
   list-style-type:none;
   margin: 0;
   padding-left: 10px;
 }
 
-ul.menu a {
+ul.simplemenu a {
   display: block;
   text-decoration: none;	
   font-weight:bold;
 }
 
-ul.menu li {
+ul.simplemenu li {
   margin-top: 1px;
 }
 
-ul.menu li a, ul.menu ul.menu li a {
+ul.simplemenu li a, ul.simplemenu ul.simplemenu li a {
   padding: 0.5em;
 }
 
-ul.menu li a:hover, ul.menu ul.menu li a:hover {
+ul.simplemenu li a:hover, ul.simplemenu ul.simplemenu li a:hover {
   background: #9EC2FF;
   -moz-border-radius: 4px/*{cornerRadius}*/; -webkit-border-radius: 4px/*{cornerRadius}*/; border-radius: 4px/*{cornerRadius}*/;
 }
 
-ul.menu li ul li a, ul.menu ul.menu li ul li a {
+ul.simplemenu li ul li a, ul.simplemenu ul.simplemenu li ul li a {
   padding-left: 10px;
 }
 
-ul.menu a.active {
+ul.simplemenu a.active {
   background: #D9E7FF;
   text-decoration: underline;
   -moz-border-radius: 4px/*{cornerRadius}*/; -webkit-border-radius: 4px/*{cornerRadius}*/; border-radius: 4px/*{cornerRadius}*/;
 }
 
-ul.menu span {
+ul.simplemenu span {
     float:left;
     margin: 0px 4px;
 }

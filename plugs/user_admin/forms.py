@@ -71,3 +71,6 @@ class EditUserForm(Form):
         user = User.get(User.c.username == data)
         if (not self.object and user) or (user and self.object and self.object.id != user.id):
             raise ValidationError, _('Username is already existed.')
+
+class UploadImageForm(Form):
+    pass

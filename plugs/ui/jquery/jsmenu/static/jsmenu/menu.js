@@ -47,9 +47,9 @@ Free to use any way you like.
 jQuery.fn.initMenu = function() {  
     return this.each(function(){
         var theMenu = $(this).get(0);
-        $('.menu', this).hide();
-        $('li.expand > .menu', this).show();
-//        $('li.expand > .menu', this).prev().addClass('active').find('span').
+        $('.simplemenu', this).hide();
+        $('li.expand > .simplemenu', this).show();
+//        $('li.expand > .simplemenu', this).prev().addClass('active').find('span').
 //            addClass('ui-icon-triangle-1-s');
         $('li a', this).click(
             function(e) {
@@ -77,7 +77,7 @@ jQuery.fn.initMenu = function() {
                 /*else {
                     if(theElement.hasClass('menu') && theElement.is(':visible')) {
                         if($(parent).hasClass('collapsible')) {
-                            $('.menu:visible', parent).first().slideUp('normal', 
+                            $('.simplemenu:visible', parent).first().slideUp('normal', 
                             function() {
                                 $(this).prev().removeClass('active');
                             }
@@ -87,7 +87,7 @@ jQuery.fn.initMenu = function() {
                     return false;
                     }
                     if(theElement.hasClass('menu') && !theElement.is(':visible')) {         
-                        $('.menu:visible', parent).first().slideUp('normal', function() {
+                        $('.simplemenu:visible', parent).first().slideUp('normal', function() {
                             $(this).prev().removeClass('active').find('span')
                                 .removeClass('ui-icon-triangle-1-s')
                                 .addClass('ui-icon-triangle-1-e');
@@ -105,4 +105,4 @@ jQuery.fn.initMenu = function() {
 });
 };
 
-$(document).ready(function() {$('.menu').initMenu();});
+$(document).ready(function() {$('.simplemenu').initMenu();});

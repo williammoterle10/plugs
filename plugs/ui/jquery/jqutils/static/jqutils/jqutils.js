@@ -87,3 +87,63 @@
     	};
     };
 })(jQuery);
+
+$(function(){
+    $('div.box-panel').each(function(){
+        var el = $(this);
+        var e = $('<span class="ui-icon ui-icon-triangle-1-s left" style="margin:8px 2px 0 2px;"></span>');
+        var h2 = el.children('h2');
+        h2.css('cursor', 'pointer');
+        h2.attr('title', 'Click here to show/hide content')
+        h2.click(function(){
+            var body = el.children('div.box-body');
+            body.slideToggle('normal', function(){
+                if ($(this).is(':visible')){
+                    e.removeClass('ui-icon-triangle-1-e')
+                    .addClass('ui-icon-triangle-1-s');
+                }else{
+                    e.removeClass('ui-icon-triangle-1-s')
+                    .addClass('ui-icon-triangle-1-e');
+                }
+            });
+        });
+        e.prependTo(el);
+    });
+});
+
+/* datepicker process */
+$(function() {
+    $('input.field_date').datepicker({ dateFormat: 'yy-mm-dd' });
+});
+
+/* fix table process */
+$(function() {
+    $('table.fix-table').each(function(){
+        var w = $(this).parent('div').width();
+        $(this).width(w).css({'table-layout':'fixed', 'word-wrap':'break-all'});
+    });
+});
+
+var template = function(tmp_string, hash_or_array){
+    function _replace(m, word){
+        var r;
+        if (Boolean(word.match(/^[0-9]+$/)) && hash_or_array.constructor == Array)
+            r = hash_or_array[parseInt(word)];
+        else
+            r = hash_or_array[word];
+        if(r == undefined)  return '';
+        else return r;
+    }
+    return $(tmp_string.replace(/\$\{?([A-Za-z_0-9]+)\}?/g, _replace));
+}
+
+$(function(){
+    $(".close").click(
+        function () {
+            $(this).parent().fadeTo(400, 0, function () { // Links with the class "close" will close parent
+                $(this).slideUp(400);
+            });
+            return false;
+        }
+    );
+});
