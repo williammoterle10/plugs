@@ -255,6 +255,7 @@ width:90px;
 nav ul li a:hover, nav ul li.active a {
     -moz-border-radius:0 0 5px 5px;
     -webkit-border-radius: 0 0 5px 5px;
+    border-radius: 0 0 5px 5px;
     background:none repeat scroll 0 0 #FC9200;
     border:0 none;
     margin:0;
