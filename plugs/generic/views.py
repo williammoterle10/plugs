@@ -1,7 +1,7 @@
 #coding=utf-8
 from uliweb.i18n import ugettext_lazy as _
 
-def get_model_url(suffix):
+def get_model_url(suffix, restful=False):
     def _f(action, id=None, suffix=suffix):
         if suffix.endswith('/'):
             suffix = suffix[:-1]
@@ -9,11 +9,17 @@ def get_model_url(suffix):
             return "%s/%s" % (suffix, action)
         elif action == 'view':
             def __f(id, url=suffix):
-                return "%s/%s" % (url, id)
+                if restful:
+                    return "%s/%s" % (url, id)
+                else:
+                    return "%s/view/%s" % (url, id)
             return __f
         else:   #others will be direct output
             def __f(id, url=suffix, action=action):
-                return "%s/%s/%s" % (url, id, action)
+                if restful:
+                    return "%s/%s/%s" % (url, action, id)
+                else:
+                    return "%s/%s/%s" % (url, id, action)
             return __f
     return _f
     

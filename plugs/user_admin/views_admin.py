@@ -250,7 +250,7 @@ class UsersManageView(object):
         from forms import EditUserForm
 
         if request.user.is_superuser:
-            view = EditView('user', condition=int(id), ok_url=get_url(UsersManageView.view),
+            view = EditView('user', condition=int(id), ok_url=get_url('view', id=id),
                 form_cls=EditUserForm)
             return view.run()
         else:
