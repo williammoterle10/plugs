@@ -12,9 +12,9 @@
             striped: false,
             singleSelect: true,
             rownumbers:true,
-            nowrap: false,
+            nowrap: true,
             width:'auto',
-            height:500,
+            height:450,
             url:url + query_string,
             columns:{{=json_dumps(table.get_columns())}},
             idField:'id'
@@ -29,7 +29,7 @@
             var pager = $('#{{=table_id}}').datagrid('getPager');    // get the pager of datagrid
             pager.pagination({
                 buttons:[{
-                    text:'下载数据',
+                    text:{{=_('Download')}},
                     iconCls:'icon-save',
                     handler:function(){
                         var query_string = $.query_string.remove('data').set('download', '').toString();

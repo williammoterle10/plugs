@@ -146,7 +146,6 @@ p {margin:0 0 1.52em;}
 form fieldset {-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius:5px; padding-top:5px; padding-left:5px; border:1px solid #ccc; }
 form fieldset legend {font-size:1.4em; padding:0 5px;}
 form input[type=text], form input[type=email], form input[type=url], form input[type=password] {
-		height:25px; 
 		margin-bottom:5px; 
 		border:1px solid #ccc; 
 		padding:4px 0 1px 5px;
@@ -230,14 +229,12 @@ pre 			{	margin:1.5em 0;white-space:pre;}
 
 /*******************************************************************/
 body, html {}
-.container {margin:0; position:relative !important;min-height:100%;
-width:100%!important;
-}
-.content {margin:0; padding-bottom: 80px;width:100% !important;}
+.container {margin:0; min-height:100%;width:100%!important;}
+.content {margin:0; padding-bottom: 20px;width:100% !important;}
 header {height:62px;margin:0 auto 5px;position:relative;border-bottom: 4px solid #D9E7FF;
 width:100%!important;
 }
-header .logo {font-size:2.2em; height:52px; padding-top:8px; font-weight:700; padding-left:30px;float:left;}
+header .logo {font-size:2.2em; height:52px; padding-top:8px; font-weight:700; padding-left:5px;float:left;}
 header nav {float:right;margin:0;}
 nav ul {list-style:none;}
 nav ul li {display:block;float:left;line-height:1;}
@@ -278,12 +275,8 @@ margin:0 auto;
 margin-top: 10px;
 padding:10px 0 18px;
 width:100%!important;
-position: absolute;
-bottom: 0;
 height:50px;
 background-color: #eee;
--moz-border-radius:0 0 5px 5px;
--webkit-border-radius: 0 0 5px 5px;
 } 
 
 .buttons {background-color:#fff;padding:4px;margin-top:10px;}
@@ -304,6 +297,7 @@ background-color: #eee;
 border-radius: 5px;
 }
 .center {margin:0 auto;}
+
 .notice {
     position: relative;
     margin: 0 0 15px 0;
@@ -407,6 +401,14 @@ padding:5px;
 font-size:10pt;
 font-weight:normal;
 color:#666;
+}
+
+.portrait{
+width: 65px;
+height: 80px;
+text-align: center;
+overflow: hidden;
+float: left;
 }
 
 ul.common-list {list-style:none;}
@@ -549,4 +551,4 @@ div.view div.field{
   }
 .current-plan {background-color: #afa;}
 div.delay {background-color:#red;color:#white;}
-img.portrait {border: 1px solid #999; padding:2px;margin:4px;}
+.query .error {color:#f00;background:#D9E7FF none;}

@@ -61,16 +61,17 @@ class AddUserForm(Form):
         User = get_model('user')
         user = User.get(User.c.username == data)
         if user:
-            raise ValidationError, _('The username is already existed! Please change another one.')
+            return _('The username is already existed! Please change another one.')
     
 class EditUserForm(Form):
     def validate_username(self, data):
         from uliweb.orm import get_model
                  
         User = get_model('user')
-        user = User.get(User.c.username == data)
-        if (not self.object and user) or (user and self.object and self.object.id != user.id):
-            raise ValidationError, _('Username is already existed.')
+        print 'xxxxx', self.object
+        user = User.get((User.c.username == data) & (User.c.id != self.object.id))
+        if user:
+            return _('Username is already existed.')
 
 class UploadImageForm(Form):
     pass
