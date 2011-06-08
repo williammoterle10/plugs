@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: Tue Jun 07 20:06:16 2011\n"
+"POT-Creation-Date: Wed Jun 08 11:03:41 2011\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -77,6 +77,26 @@ msgstr ""
 
 #: .\generic\views.py:137
 msgid "Edit %s(#%d)"
+msgstr ""
+
+#: .\layout\settings.ini:2
+msgid "All rights reversed!"
+msgstr ""
+
+#: .\layout\settings.ini:3
+msgid "Uliweb Plugs Demo"
+msgstr ""
+
+#: .\layout\settings.ini:5
+msgid "Home"
+msgstr ""
+
+#: .\layout\settings.ini:6
+msgid "Admin"
+msgstr ""
+
+#: .\layout\settings.ini:7
+msgid "About"
 msgstr ""
 
 #: .\layout\templates\layout.html:13
