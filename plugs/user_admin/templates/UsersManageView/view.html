@@ -30,7 +30,7 @@
             <a class="btn btn-green" href="/user/edit">{{=_('Edit')}}</a>
             {{pass}}
             {{if request.user.is_superuser:}}
-            <a class="btn btn-blue" href="/users/{{=object.id}}/delete" onclick="return confirm('{{=_('Do you really wnat to delete the user?')}}');">{{=_('Delete')}}</a>
+            <a class="btn btn-blue" href="/users/delete/{{=object.id}}" onclick="return confirm('{{=_('Do you really wnat to delete the user?')}}');">{{=_('Delete')}}</a>
             {{pass}}
             </div>
         </div>
