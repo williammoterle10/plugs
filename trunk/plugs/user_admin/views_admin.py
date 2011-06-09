@@ -261,7 +261,7 @@ class UsersManageView(object):
         from uliweb.utils.generic import DeleteView
         
         if request.user.is_superuser:
-            view = DeleteView('user', condition=int(id), ok_url=url_for(users_list))
+            view = DeleteView('user', condition=int(id), ok_url=get_url('list'))
             return view.run()
         else:
             flash(_('You have no previlege to delete user.'), 'error')
