@@ -137,13 +137,9 @@ var template = function(tmp_string, hash_or_array){
     return $(tmp_string.replace(/\$\{?([A-Za-z_0-9]+)\}?/g, _replace));
 }
 
-$(function(){
-    $(".close").click(
-        function () {
-            $(this).parent().fadeTo(400, 0, function () { // Links with the class "close" will close parent
-                $(this).slideUp(400);
-            });
-            return false;
-        }
-    );
+/* process rselect input */
+$(function() {
+    $('input.rselect').each(function(){
+        $(this).rselect();
+    });
 });

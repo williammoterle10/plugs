@@ -4,4 +4,4 @@ def call(app, var, env, ajaxForm=False):
     a.append('jqutils/jqrselect.js')
     if ajaxForm:
         a.append('jqutils/jquery.form.js')
-    return {'toplinks':a}
+    return {'toplinks':a, 'depends':[('jquery', {'ui':True})]}
