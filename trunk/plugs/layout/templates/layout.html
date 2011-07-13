@@ -4,7 +4,7 @@
   <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
   <title>{{=settings.LAYOUT.TITLE}}</title>
   <!--[if lt IE 9]>
-  <script src="{{=url_for_static('52framework/js/html5.js')}}"></script>
+  <script src="{{=url_for_static('js/html5.js')}}"></script>
   <![endif]-->
   <link rel="stylesheet" type="text/css" href="{{=url_for_static('site.css')}}" media="screen" />
   <link rel="stylesheet" type="text/css" href="{{=url_for_static('forms.css')}}" media="screen" />
@@ -12,6 +12,7 @@
 </head>
 <body>
     {{include "menu.html"}}
+    {{include "inc_show_flashes.html"}}
     <div class="container">
     <div class="top_header">
         {{block userinfo}}
@@ -56,12 +57,12 @@
                 <!-- Conent of group -->
                 <table border="0" cellspacing="10px" cellpadding="4px" style="width:100%">
                     <tr>
-                        <td width="200px" valign="top">
+                        <td width="200px" valign="top" align="left">
                             {{block content_sidebar}}
     
                             {{end}}
                         </td>
-                        <td width="*" valign="top">
+                        <td width="*" valign="top" align="left">
                         <div class="content_tool">
                             {{block content_tool}}
                             {{end}}
@@ -71,12 +72,14 @@
                             {{end}}
                         </div>
                         </td>
+                        <td width="20px"></td>
                     </tr>
                 </table>
             {{end}}
         </div>
     </div>
     {{end}}
+    </div>
     {{block footer}}
     <footer>
         <div class="align_center">
@@ -84,6 +87,5 @@
         </div>
     </footer>
     {{end}}
-    </div>
 </body>
 </html>
