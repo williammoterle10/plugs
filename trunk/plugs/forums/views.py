@@ -366,6 +366,9 @@ class ForumView(object):
             return url
         
         def actions(value, obj):
+            if not request.user:
+                return ''
+            
             a = []
             is_manager = forum.managers.has(request.user)
             if obj.floor == 1:
@@ -396,7 +399,8 @@ class ForumView(object):
         if 'data' in request.values:
             return json(view.json())
         else:
-            key = '__topicvisited__:forumtopic:%d:%s:%s' % (request.user.id, forum_id, topic_id)
+#            key = '__topicvisited__:forumtopic:%d:%s:%s' % (request.user.id, forum_id, topic_id)
+            key = '__topicvisited__:forumtopic:%s:%s:%s' % (request.remote_addr, forum_id, topic_id)
             cache = function('get_cache')()
             v = cache.get(key, None)
             if not v:

@@ -2,12 +2,16 @@
 
 {{block forum_nav}}
     <div class="nav">
-        <a href="/forum" class="home" title="首页">论坛首页</a>
+        <a href="{{=url_for('forums.views.ForumView.list')}}" class="home" title="首页">论坛首页</a>
         <em>»</em>
-        <span>{{=forum.name}}</span>
+        <span><a href="{{=url_for('forums.views.ForumView.forum_index', id=forum.id)}}">{{=forum.name}}</a></span>
     </div>
     <div class="tool">
+        {{if request.user:}}
         <a class="btn btn-green" href="/forum/{{=forum.id}}/new_topic">新主题</a>
+        {{else:}}
+        <font color="red">你还没有登录，无法发表新主题！</font>
+        {{pass}}
     </div>
 {{end}}
 
