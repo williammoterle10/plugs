@@ -50,24 +50,33 @@
 </ul>
 <div id="paginate"></div>
 {{include "inc_syntaxhighlighter.html"}}
-{{if not topic.closed:}}
-    <div class="replay">
-        <h3>发表评论</h3>
-        <form action="/forum/{{=forum.id}}/{{=topic.id}}/new_post" method="POST">
-            <div class="type-text">
-                <textarea name="content" class="field" cols="75" rows="10"></textarea>
+{{if request.user:}}
+    {{if not topic.closed:}}
+        <div class="replay">
+            <h3>发表评论</h3>
+            <form action="/forum/{{=forum.id}}/{{=topic.id}}/new_post" method="POST">
+                <div class="type-text">
+                    <textarea name="content" class="field" cols="75" rows="10"></textarea>
+                </div>
+                <div class="line">
+                    <input type="submit" value="发表评论"></input>
+                </div>
+            </form>
+            <div>
+                <a href="#a_topic">回页面顶部</a> 
             </div>
-            <div class="line">
-                <input type="submit" value="发表评论"></input>
-            </div>
-        </form>
-        <div>
-            <a href="#a_topic">回页面顶部</a> 
         </div>
-    </div>
+    {{else:}}
+        <div class="replay">
+            <b>此主题已经被关闭，无法继续评论！</b>
+            <div>
+                <a href="#a_topic">回页面顶部</a> 
+            </div>
+        </div>
+    {{pass}}
 {{else:}}
     <div class="replay">
-        <b>此主题已经被关闭，无法继续回复！</b>
+        <b>你尚未登录，无法评论！</b>
         <div>
             <a href="#a_topic">回页面顶部</a> 
         </div>

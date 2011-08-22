@@ -142,17 +142,6 @@ p {margin:0 0 1.52em;}
 	p img.left {float:left;margin:1.52em 1.52em 1.52em 0;padding:0;}
 	p img.right {float:right;margin:1.52em 0 1.52em 1.52em;}
 
-/* ** ** forms ** ** */
-form fieldset {-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius:5px; padding-top:5px; padding-left:5px; border:1px solid #ccc; }
-form fieldset legend {font-size:1.4em; padding:0 5px;}
-form input[type=text], form input[type=email], form input[type=url], form input[type=password] {
-		margin-bottom:5px; 
-		border:1px solid #ccc; 
-		padding:4px 0 1px 5px;
-		}
-form label {display:block; height:20px; font-size:1.2em;}
-
-
 strong   		{	font-weight:600;}
 em, dfn  		{	font-style:italic;}
 dfn 	 		{   font-weight:600;}
@@ -160,8 +149,8 @@ sup, sub 		{   line-height:0;}
 abbr, acronym   {	border-bottom:1px dashed #ccc;}
 address 		{	margin:0 0 1.5em;font-style:italic;}
 del 			{	color:#666;}
-pre, code, tt   {	font:1em 'andale mono', 'lucida console', monospace;line-height:1.5; display:block;}
-code 			{	background-color:#d5d2d8; display:block; padding:0px 2px 4px 26px; background:#fff url(code.jpg) no-repeat left top; line-height:1.67em;}
+pre, code, tt   {	font:1em 'andale mono', 'lucida console', monospace;line-height:1.5;}
+code 			{	background-color:#d5d2d8; padding:0px 2px 4px 26px; background:#fff url(code.jpg) no-repeat left top; line-height:1.67em;}
 pre 			{	margin:1.5em 0;white-space:pre;}
 
 /* CSS3 */
@@ -231,13 +220,13 @@ pre 			{	margin:1.5em 0;white-space:pre;}
 body, html {}
 .container {margin:0; min-height:100%;width:100%!important;}
 .content {margin:0; padding-bottom: 10px;width:100% !important;}
-header {height:62px;margin:0 auto 5px;position:relative;
+header {height:52px;margin:0 auto 5px;position:relative;
 width:100%!important;background-color:#e7eef8;
 -webkit-box-shadow: 2px 2px 3px #ccc;
 -moz-box-shadow: 2px 2px 3px #ccc;
 box-shadow: 2px 2px 3px #ccc;
 }
-header .logo {font-size:2.2em; height:52px; padding-top:8px; font-weight:700; padding-left:5px;float:left;}
+header .logo {font-size:2.2em; height:40px; padding-top:8px; font-weight:700; padding-left:5px;float:left;}
 header nav {float:right;margin:0;}
 nav ul {list-style:none;}
 nav ul li {display:block;float:left;line-height:1;}
@@ -248,9 +237,9 @@ cursor:pointer;
 display:block;
 font-weight:bold;
 margin:9px 0 0 -1px;
-padding:18px 5px 11px 15px;
+padding:8px 8px 11px 8px;
 text-decoration:none;
-width:90px;
+width:70px;
 }
 nav ul li a:hover, nav ul li.active a {
     -moz-border-radius:0 0 5px 5px;
@@ -259,7 +248,7 @@ nav ul li a:hover, nav ul li.active a {
     background:none repeat scroll 0 0 #FC9200;
     border:0 none;
     margin:0;
-    padding-top:27px;
+    padding-top:17px;
     position:relative;
     z-index:2;
 }

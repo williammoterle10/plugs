@@ -140,15 +140,13 @@
   form.yform div.type-check,
   form.yform div.type-button {
     margin: 1em 0;
-    position: relative;
-    overflow: hidden;
+   /* overflow: hidden;*/
   }
 
   /* styling standard form elements with 'almost' equal flexible width | Gestaltung der einzelnen Formularelemente mit annähend gleicher Breite */
   form.yform .type-text input,
   form.yform .type-text textarea {
     display: block;
-    position: relative;
     padding: 0.3em 0.3em;
   }
 
@@ -180,6 +178,8 @@
   }
 
   form.yform div.error .message { color: #800; }
+
+  input.disabled, textarea.disabled, select.disabled {background-color: #EBEBE4;}
 
  /*------------------------------------------------------------------------------------------------------*/
 
