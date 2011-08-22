@@ -5,7 +5,7 @@ from uliweb import expose
 from uliweb.contrib.auth import require_login
 import plugs.generic.views as g_views
 
-get_url = g_views.get_model_url('/users')
+get_url = g_views.get_url('/users')
 
 def _get_portrait_image_filename(id):
     import os
