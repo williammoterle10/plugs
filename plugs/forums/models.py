@@ -39,8 +39,8 @@ class Forum(Model):#论坛
     category = Reference('forumcategory', verbose_name='所属板块', collection_name='forums', required=True)
     created_on = Field(datetime.datetime, verbose_name='创建时间', auto_now_add=True)
     updated_on = Field(datetime.datetime, verbose_name='修改时间', auto_now_add=True, auto_now=True)
-    num_topics = Field(int, verbose_name='主题总数',default = 1)
-    num_posts = Field(int, verbose_name='文章总数',default = 1)
+    num_topics = Field(int, verbose_name='主题总数')
+    num_posts = Field(int, verbose_name='文章总数')
 #    attachments = Field(FILE, verbose_name='附件', hint='文件大小不能超过2M，请注意文件大小')
 
     last_reply_on = Field(datetime.datetime, verbose_name='最新回复时间')
