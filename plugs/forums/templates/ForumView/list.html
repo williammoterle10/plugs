@@ -12,7 +12,7 @@
                     <th>文章</th>
                     <th>最新文章</th>
                 </tr>
-                {{for f in c.forums.all():}}
+                {{for f in c.forums.all().order_by('ordering'):}}
                     <tr>
                         <td width="*"><div class="title"><h3><a href="/forum/{{=f.id}}">{{=f.name}}</a></h3><p>{{=f.description}}</p></div></td>
                         <td align="center" width="60">{{=f.num_topics}}</td>
