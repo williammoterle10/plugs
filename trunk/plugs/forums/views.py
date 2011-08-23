@@ -296,9 +296,17 @@ class ForumView(object):
             self._clear_files(obj.slug, data['content'])
             
         def get_form_field(name):
+            from uliweb.utils.generic import ReferenceSelectField
             from uliweb.form import TextField
+            
+            forumtopictype = get_model('forumtopictype')
+            
             if name == 'content':
                 return TextField('内容', required=True, rows=20, convert_html=True)
+            if name == 'topic_type':
+                return ReferenceSelectField('forumtopictype', 
+                    condition=forumtopictype.c.forum==forum.id, label='主题分类名称')
+            
         slug = uuid.uuid1().hex
         data = {'slug':slug}
         view = AddView('forumtopic', url_for(ForumView.forum_index, id=int(id)),
@@ -337,6 +345,7 @@ class ForumView(object):
         显示某主题页面
         """
         from uliweb.utils.generic import ListView
+        import uuid
         
         pageno = int(request.values.get('page', 1)) - 1
         rows_per_page=int(request.values.get('rows', settings.get_var('PARA/FORUM_PAGE_NUMS')))
@@ -407,8 +416,9 @@ class ForumView(object):
                 Topic.filter(Topic.c.id==int(topic_id)).update(num_views=Topic.c.num_views+1)
                 cache.set(key, 1, settings.get_var('PARA/FORUM_USER_VISITED_TIMEOUT'))
 
+            slug = uuid.uuid1().hex
             topic = Topic.get(int(topic_id))
-            return {'forum':forum, 'topic':topic}
+            return {'forum':forum, 'topic':topic, 'slug':slug}
     
     @expose('<forum_id>/<topic_id>/new_post')
     def new_post(self, forum_id, topic_id):
@@ -438,7 +448,7 @@ class ForumView(object):
                 return TextField('内容', required=True, convert_html=True, rows=20)
         
         view = AddView('forumpost', url_for(ForumView.topic_view, forum_id=int(forum_id), topic_id=int(topic_id)),
-            hidden_fields=['slug'],
+            hidden_fields=['slug'], 
             pre_save=pre_save, get_form_field=get_form_field, post_save=post_save)
         return view.run()
     
